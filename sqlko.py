@@ -8,4 +8,4 @@ with open('skript.sql', 'w') as f:
         f.write(f"CREATE USER '{prijmeni}'@'localhost' IDENTIFIED BY '{prijmeni}123.';\n")
         f.write(f"GRANT ALL PRIVILEGES ON {prijmeni}.* TO '{prijmeni}'@'localhost' WITH GRANT OPTION;\n")
 
-
+#ahojky bleh
