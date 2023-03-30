@@ -50,3 +50,6 @@ def gameLoop():
     quit()
 
 gameLoop()
+
+
+#ahojky test test 123
