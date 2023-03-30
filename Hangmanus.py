@@ -13,21 +13,21 @@ def play(word):
     guessed_letters = []
     guessed_words = []
     tries = 6
-    print("Let's play Hangman!")
+    print("Hrajeme ŠIBENICI!")
     print(display_hangman(tries))
     print(word_completion)
     print("\n")
     while not guessed and tries > 0:
-        guess = input("Please guess a letter or word: ").upper()
+        guess = input("Hádej slovo nebo písmenko: ").upper()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
-                print("You already guessed the letter", guess)
+                print("Už si hádal tohle písmenko!", guess)
             elif guess not in word:
-                print(guess, "is not in the word.")
+                print(guess, "není ve slově :(.")
                 tries -= 1
                 guessed_letters.append(guess)
             else:
-                print("Good job,", guess, "is in the word!")
+                print("Dobrá práce,", guess, "je ve slově!")
                 guessed_letters.append(guess)
                 word_as_list = list(word_completion)
                 indices = [i for i, letter in enumerate(word) if letter == guess]
@@ -38,9 +38,9 @@ def play(word):
                     guessed = True
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
-                print("You already guessed the word", guess)
+                print("Už si hádal tohle slovo", guess)
             elif guess != word:
-                print(guess, "is not the word.")
+                print(guess, "není to slovo.")
                 tries -= 1
                 guessed_words.append(guess)
             else:
@@ -52,9 +52,9 @@ def play(word):
         print(word_completion)
         print("\n")
     if guessed:
-        print("Congrats, you guessed the word! You win!")
+        print("Gratuluji, výhrál si!")
     else:
-        print("Sorry, you ran out of tries. The word was " + word + ". Maybe next time!")
+        print("HMM... Slovo bylo " + word + ". Možná příště vyhraješ!")
 
 
 def display_hangman(tries):
@@ -135,7 +135,7 @@ def display_hangman(tries):
 def main():
     word = get_word()
     play(word)
-    while input("Play Again? (Y/N) ").upper() == "Y":
+    while input("Chceš hrát znova? (Y/N) ").upper() == "Y":
         word = get_word()
         play(word)
 
