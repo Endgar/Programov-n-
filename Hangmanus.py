@@ -12,19 +12,19 @@ def play(word):
     guessed = False
     guessed_letters = []
     guessed_words = []
-    tries = 6
+    pokus = 6
     print("Hrajeme ŠIBENICI!")
-    print(display_hangman(tries))
-    print(word_completion)
+    print(display_hangman(pokus))
+    print(word_completion)match
     print("\n")
-    while not guessed and tries > 0:
+    while not guessed and pokus > 0:
         guess = input("Hádej slovo nebo písmenko: ").upper()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
                 print("Už si hádal tohle písmenko!", guess)
             elif guess not in word:
                 print(guess, "není ve slově :(.")
-                tries -= 1
+                pokus -= 1
                 guessed_letters.append(guess)
             else:
                 print("Dobrá práce,", guess, "je ve slově!")
@@ -41,14 +41,14 @@ def play(word):
                 print("Už si hádal tohle slovo", guess)
             elif guess != word:
                 print(guess, "není to slovo.")
-                tries -= 1
+                pokus -= 1
                 guessed_words.append(guess)
             else:
                 guessed = True
                 word_completion = word
         else:
             print("Not a valid guess.")
-        print(display_hangman(tries))
+        print(display_hangman(pokus))
         print(word_completion)
         print("\n")
     if guessed:
@@ -57,8 +57,8 @@ def play(word):
         print("HMM... Slovo bylo " + word + ". Možná příště vyhraješ!")
 
 
-def display_hangman(tries):
-    stages = [  # final state: head, torso, both arms, and both legs
+def display_hangman(pokus):
+    stages = [  
                 """
                    --------
                    |      |
@@ -68,7 +68,7 @@ def display_hangman(tries):
                    |     / \\
                    -
                 """,
-                # head, torso, both arms, and one leg
+                # hlavu, trup, obě paže a jednu nohu
                 """
                    --------
                    |      |
@@ -78,7 +78,7 @@ def display_hangman(tries):
                    |     / 
                    -
                 """,
-                # head, torso, and both arms
+                # hlavu, trup a obě paže
                 """
                    --------
                    |      |
@@ -88,7 +88,7 @@ def display_hangman(tries):
                    |      
                    -
                 """,
-                # head, torso, and one arm
+                # hlava, trup a jedna paže
                 """
                    --------
                    |      |
@@ -98,7 +98,7 @@ def display_hangman(tries):
                    |     
                    -
                 """,
-                # head and torso
+                # hlavu a trup
                 """
                    --------
                    |      |
@@ -108,7 +108,7 @@ def display_hangman(tries):
                    |     
                    -
                 """,
-                # head
+                # hlava
                 """
                    --------
                    |      |
@@ -118,7 +118,7 @@ def display_hangman(tries):
                    |     
                    -
                 """,
-                # initial empty state
+                # nic
                 """
                    --------
                    |      |
@@ -129,7 +129,7 @@ def display_hangman(tries):
                    -
                 """
     ]
-    return stages[tries]
+    return stages[pokus]
 
 
 def main():
