@@ -1,4 +1,4 @@
-word_list = [
+list_slov = [
     'pes',
     'auto',
     'mlok',
